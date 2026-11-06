@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f0">
+  <title>Sign in — FoodieExpress</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css', v='2') }}">
+</head>
+<body class="auth-page">
+  <header class="site-header"><nav class="nav shell" aria-label="Main navigation">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">f<span>.</span></span><span>foodie<span class="brand-light">express</span></span></a>
+    <a class="text-link" href="{{ url_for('home') }}">← Back to the menu</a>
+  </nav></header>
+  <main class="auth-shell shell">
+    <section class="auth-art"><span class="eyebrow">GOOD FOOD, GOOD PEOPLE</span><h1>Welcome to your<br><em>FoodieExpress.</em></h1><p>One account for every craving, kitchen, delivery and happy customer.</p><div class="auth-art-plate" aria-hidden="true">🍛<span>✦</span></div></section>
+    <section class="auth-card">
+      <div class="eyebrow">A SEAT AT THE TABLE</div><h2>Sign in to continue.</h2><p class="auth-card-intro">Choose your account type, then enter your credentials.</p>
+      <form id="loginPageForm" class="auth-page-form">
+        <fieldset class="role-options"><legend>Your role</legend>
+          <label><input type="radio" name="role" value="customer" {% if selected_role not in ['admin', 'chef', 'delivery_partner'] %}checked{% endif %}><span>🍽️<strong>Customer</strong></span></label>
+          <label><input type="radio" name="role" value="chef" {% if selected_role == 'chef' %}checked{% endif %}><span>👨‍🍳<strong>Chef</strong></span></label>
+          <label><input type="radio" name="role" value="delivery_partner" {% if selected_role == 'delivery_partner' %}checked{% endif %}><span>🛵<strong>Delivery</strong></span></label>
+          <label><input type="radio" name="role" value="admin" {% if selected_role == 'admin' %}checked{% endif %}><span>📋<strong>Admin</strong></span></label>
+        </fieldset>
+        <label>Email address<input name="email" type="email" autocomplete="username" maxlength="254" required placeholder="you@example.com"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" maxlength="256" required placeholder="Your password"></label>
+        <button class="button auth-submit" type="submit">Sign in <span>→</span></button>
+        <p id="loginMessage" class="form-message" role="status"></p>
+      </form>
+      <p class="auth-switch">New to FoodieExpress? <a href="{{ url_for('signup_page') }}">Create a customer account</a></p>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='login.js', v='1') }}" defer></script>
+</body>
+</html>

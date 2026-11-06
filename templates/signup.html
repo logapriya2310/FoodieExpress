@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f0">
+  <title>Create your account — FoodieExpress</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css', v='2') }}">
+</head>
+<body class="auth-page">
+  <header class="site-header"><nav class="nav shell" aria-label="Main navigation">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">f<span>.</span></span><span>foodie<span class="brand-light">express</span></span></a>
+    <a class="text-link" href="{{ url_for('login_page') }}">Already have an account? Sign in →</a>
+  </nav></header>
+  <main class="auth-shell shell">
+    <section class="auth-art"><span class="eyebrow">YOUR NEXT GREAT MEAL</span><h1>Good food is<br><em>closer than ever.</em></h1><p>Create your customer account to save addresses, revisit orders, and keep your favorites close.</p><div class="auth-art-plate" aria-hidden="true">🥘<span>✦</span></div></section>
+    <section class="auth-card">
+      <div class="eyebrow">JUST ONE LITTLE THING</div><h2>Join the table.</h2><p class="auth-card-intro">Customer sign-up · Your password is stored securely.</p>
+      <form id="signupPageForm" class="auth-page-form">
+        <label>Your name<input name="name" autocomplete="name" minlength="2" maxlength="100" required placeholder="How should we address you?"></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com"></label>
+        <label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" maxlength="256" required placeholder="At least 8 characters"></label>
+        <button class="button auth-submit" type="submit">Create my account <span>→</span></button>
+        <p id="signupMessage" class="form-message" role="status"></p>
+      </form>
+      <p class="auth-switch">Staff account? <a href="{{ url_for('login_page') }}">Sign in with your assigned role</a></p>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='login.js', v='1') }}" defer></script>
+</body>
+</html>

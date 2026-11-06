@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f0">
+  <title>{{ role|replace('_', ' ')|title }} Dashboard — FoodieExpress</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css', v='2') }}">
+</head>
+<body class="dashboard-page" data-role="{{ role }}">
+  <header class="site-header"><nav class="nav shell dashboard-nav" aria-label="Dashboard navigation">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">f<span>.</span></span><span>foodie<span class="brand-light">express</span></span></a>
+    <span class="dashboard-user"><span class="role-badge">{{ role|replace('_', ' ')|title }}</span> {{ user.name }}</span>
+    <div class="dashboard-nav-actions">{% if role == 'customer' %}<a class="text-link" href="{{ url_for('home') }}#menu">Browse menu ↗</a>{% endif %}<a class="button button-small button-outline" href="{{ url_for('logout_page') }}">Sign out</a></div>
+  </nav></header>
+  <main class="shell dashboard-shell">
+    <div class="dashboard-heading">
+      <div><div class="eyebrow">FOODIEEXPRESS · {{ role|replace('_', ' ')|upper }}</div>
+        <h1>{% if role == 'admin' %}Your store, at a glance.{% elif role == 'chef' %}Let’s get cooking.{% elif role == 'delivery_partner' %}Good things are on the move.{% else %}Your FoodieExpress.{% endif %}</h1>
+        <p>{% if role == 'admin' %}Manage the menu, your team, orders and offers.{% elif role == 'chef' %}Review new tickets and update the kitchen’s progress.{% elif role == 'delivery_partner' %}See your assigned deliveries and update their journey.{% else %}Your orders, saved addresses, and latest foodie favorites.{% endif %}</p>
+      </div>
+      <div class="dashboard-live"><span></span> Connected to FoodieExpress</div>
+    </div>
+    <div id="dashboardMessage" class="dashboard-message" role="status"></div>
+    <section id="dashboardStats" class="dashboard-stats"></section>
+    <section id="dashboardContent" class="dashboard-content" aria-live="polite"></section>
+  </main>
+  <footer class="footer"><div class="shell footer-bottom"><span>© 2026 FoodieExpress · Good food. Great mood.</span><a href="{{ url_for('home') }}">Back to storefront</a></div></footer>
+  <script src="{{ url_for('static', filename='dashboard.js', v='1') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f0">
+  <meta name="description" content="FoodieExpress brings your favorite local flavors to your door, fresh and fast.">
+  <title>FoodieExpress — Good food. Great mood.</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css', v='2') }}">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="FoodieExpress home"><span class="brand-mark">f<span>.</span></span><span>foodie<span class="brand-light">express</span></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a><a href="#menu">Menu</a><a href="#categories">Categories</a><a href="#offers">Offers</a><a href="#reviews">Reviews</a>
+        <button class="nav-login" id="loginOpen">Sign in</button>
+        <button class="cart-button" id="cartOpen" aria-label="Open shopping cart">Bag <span id="cartCount">0</span></button>
+        <a class="button button-small" href="#menu">Order now <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> GOOD FOOD, GOOD MOOD</div>
+        <h1>Your Favourite Food,<br>Delivered Fresh<br><em>to Your Door!</em></h1>
+        <p>From the first sizzle to your first bite — discover the local flavors you love, made with care and brought right to your door.</p>
+        <div class="hero-actions"><a class="button" href="#menu">Explore the menu <span>↗</span></a><button class="button button-quiet" id="heroOrder">Order for delivery <span>→</span></button></div>
+        <div class="hero-proof"><div class="avatar-stack"><span>👩🏽</span><span>👨🏻</span><span>👩🏼</span></div><div><strong>4.9/5</strong><small>Loved by 2,000+ foodies</small></div><span class="proof-divider"></span><div><strong>25–35 min</strong><small>Average delivery</small></div></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-image-wrap"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1100&q=90" alt="Colorful Indian meal served fresh in a bowl" onerror="this.style.display='none'"></div>
+        <div class="hero-sticker"><span>✦</span><strong>Made fresh,<br>just for you</strong></div>
+        <div class="hero-note"><span class="note-icon">🥡</span><span><strong>Zero compromise</strong><small>Fresh from our kitchen</small></span><span class="note-arrow">↗</span></div>
+        <span class="hero-sparkle sparkle-one">✳</span><span class="hero-sparkle sparkle-two">✦</span>
+      </div>
+    </section>
+
+    <section class="category-section shell" id="categories">
+      <div class="section-heading compact-heading"><div><div class="eyebrow">A LITTLE SOMETHING FOR EVERYONE</div><h2>What sounds <em>good?</em></h2></div><a class="text-link" href="#menu">See full menu <span>→</span></a></div>
+      <div class="category-list" id="categoryList" aria-label="Food categories"></div>
+    </section>
+
+    <section class="menu-section section-pad" id="menu">
+      <div class="shell">
+        <div class="section-heading menu-heading"><div><div class="eyebrow">MADE WITH LOVE, SERVED WITH JOY</div><h2>Today’s <em>favorites</em></h2><p>Good ingredients. Big flavor. No shortcuts.</p></div><a class="text-link" href="#recommendations">Need a little inspiration? <span>→</span></a></div>
+        <div class="menu-tools">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="foodSearch" type="search" placeholder="Search dishes..." aria-label="Search dishes"></label>
+          <label class="price-filter">Up to <span>₹</span><input id="priceFilter" type="number" min="0" placeholder="Any price" aria-label="Maximum price"></label>
+          <div class="filter-chips" id="filterChips" aria-label="Filter menu by category"></div>
+        </div>
+        <div class="food-grid" id="foodGrid" aria-live="polite"></div>
+        <p class="empty-state hidden" id="menuEmpty">No dishes match just yet. Try another search or filter.</p>
+      </div>
+    </section>
+
+    <section class="recommend-section section-pad" id="recommendations">
+      <div class="shell">
+        <div class="recommend-heading"><div><div class="eyebrow">A MATCH MADE IN FOOD HEAVEN</div><h2>Good together.<br><em>Even better</em> delivered.</h2><p>We did the pairing. You do the enjoying.</p></div><span class="recommend-doodle" aria-hidden="true">✷</span></div>
+        <div class="combo-grid" id="comboGrid"></div>
+      </div>
+    </section>
+
+    <section class="diwali-section section-pad" id="offers">
+      <div class="diwali-glow"></div><div class="shell diwali-inner">
+        <div class="diwali-copy"><div class="diwali-label">✦ THE FESTIVE TABLE ✦</div><h2>A little more<br><em>joy</em> in every bite.</h2><p>Bring everyone to the table. Celebrate Diwali with sweet little treats, family feasts, and one less thing to worry about.</p>
+          <ul class="offer-list"><li><span>01</span> 20% off selected sweets <b>DIWALI20</b></li><li><span>02</span> Buy two sweet boxes, save ₹99</li><li><span>03</span> Free delivery on orders ₹499+</li><li><span>04</span> Diwali family feast combos from ₹845</li></ul>
+          <div class="coupon-row"><code>DIWALI20</code><button class="coupon-apply" id="offerCoupon">Apply at checkout <span>→</span></button></div>
+          <small class="offer-small">One sweet deal per order. Good things are worth sharing.</small>
+        </div>
+        <div class="diwali-art"><img src="https://images.unsplash.com/photo-1605197161470-5d4b8c2c0f49?auto=format&fit=crop&w=1000&q=85" alt="Traditional Indian sweets arranged for a festive celebration" loading="lazy" onerror="this.style.display='none'"><div class="diwali-stamp"><span>FESTIVE</span><strong>20<sup>%</sup></strong><span>something sweet</span></div><span class="diya diya-one">✦</span><span class="diya diya-two">✧</span></div>
+      </div>
+    </section>
+
+    <section class="reviews-section section-pad" id="reviews">
+      <div class="shell">
+        <div class="section-heading"><div><div class="eyebrow">DON’T JUST TAKE OUR WORD FOR IT</div><h2>Love notes from <em>foodies.</em></h2></div><div class="rating-summary"><strong>4.9</strong><span>★★★★★<small>Based on 2,000+ happy bites</small></span></div></div>
+        <div class="review-grid" id="reviewGrid"></div>
+        <details class="review-form-wrap"><summary>Had a delivery? Leave us a little love <span>＋</span></summary><form id="reviewForm" class="review-form"><label>Food ordered<input name="food" required placeholder="e.g. Masala Dosa"></label><label>Your rating<select name="rating" required><option value="">Choose rating</option><option value="5">★★★★★ — Loved it</option><option value="4">★★★★ — Really good</option><option value="3">★★★ — Good</option><option value="2">★★ — Could be better</option><option value="1">★ — Not for me</option></select></label><label class="review-feedback">Your note<textarea name="feedback" minlength="8" maxlength="500" required placeholder="Tell us what made your day..."></textarea></label><button class="button" type="submit">Share your review <span>→</span></button><p class="form-message" id="reviewMessage" role="status"></p></form></details>
+      </div>
+    </section>
+
+    <section class="how-section section-pad">
+      <div class="shell"><div class="center-heading"><div class="eyebrow">EASY AS ONE, TWO, THREE, EAT</div><h2>From craving to <em>“mmm”</em></h2></div>
+        <div class="steps-grid"><article class="step"><span class="step-num">01</span><span class="step-icon">⌕</span><h3>Find your thing</h3><p>Scroll the good stuff, pick what makes you happy.</p></article><article class="step"><span class="step-num">02</span><span class="step-icon">＋</span><h3>Make it a meal</h3><p>Add your favorites (and maybe one for later).</p></article><article class="step"><span class="step-num">03</span><span class="step-icon">♡</span><h3>We get cooking</h3><p>Our kitchen makes it fresh, just for you.</p></article><article class="step"><span class="step-num">04</span><span class="step-icon">⌁</span><h3>Good things arrive</h3><p>Follow your order, then dig right in.</p></article></div>
+      </div>
+    </section>
+
+    <section class="cta-section shell"><div class="cta-content"><div class="eyebrow">YOUR NEXT GREAT MEAL IS RIGHT HERE</div><h2>Hungry? Delicious Food Is Just One Click Away!</h2><p>A really good meal is only a few clicks away.</p><a class="button button-light" href="#menu">Order now <span>↗</span></a></div><span class="cta-emoji" aria-hidden="true">🍋</span><span class="cta-spark">✳</span></section>
+  </main>
+
+  <footer class="footer"><div class="shell footer-main"><div class="footer-about"><a class="brand brand-footer" href="#home"><span class="brand-mark">f<span>.</span></span><span>foodie<span class="brand-light">express</span></span></a><p>Good food brings us together.<br>We just help it get there.</p><div class="social-links"><a href="https://www.instagram.com/" aria-label="Instagram">ig</a><a href="https://www.facebook.com/" aria-label="Facebook">fb</a><a href="https://www.youtube.com/" aria-label="YouTube">yt</a></div></div>
+    <div class="footer-column"><strong>Explore</strong><a href="#menu">Our menu</a><a href="#categories">Categories</a><a href="#offers">Today's offers</a><a href="#recommendations">Food pairings</a></div><div class="footer-column"><strong>We’re here</strong><a href="#home">About us</a><a href="#reviews">Reviews</a><button id="historyOpen">Your orders</button><button id="lastOrderOpen" class="hidden">Track last order</button><a href="/dashboard/chef">Chef dashboard</a><button id="partnerOpen">Partner dashboard</button><button id="adminOpen">Admin dashboard</button><button id="logoutOpen" class="hidden">Sign out</button><a href="mailto:hello@foodieexpress.example">Contact us</a></div><div class="footer-note"><span>GOOD FOOD. GREAT MOOD.</span><p>Made with a little extra love, delivered with a smile.</p><a href="#home">Back to the top ↑</a></div>
+    </div><div class="shell footer-bottom"><span>© 2026 FoodieExpress. Made for good days.</span><span><a href="/privacy">Privacy Policy</a><a href="/terms">Terms and Conditions</a><span>Fresh food, happy humans.</span></span></div></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="app-dialog" id="cartDialog"><div class="dialog-head"><div><div class="eyebrow">YOUR VERY GOOD CHOICES</div><h2>Your bag <span id="cartHeadingCount">(0)</span></h2></div><button class="icon-close" data-close aria-label="Close cart">×</button></div><div id="cartLines" class="cart-lines"></div><div class="cart-footer"><div class="coupon-entry"><input id="couponInput" placeholder="Coupon code" aria-label="Coupon code"><button id="applyCoupon">Apply</button></div><p class="coupon-message" id="couponMessage" role="status"></p><div class="price-row"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div><div class="price-row discount-row hidden" id="discountRow"><span>Discount</span><strong id="cartDiscount">−₹0</strong></div><div class="price-row"><span>Delivery</span><strong id="cartDeliveryFee">₹39</strong></div><div class="price-row grand-total"><span>Total</span><strong id="cartTotal">₹39</strong></div><form id="checkoutForm" class="checkout-form"><label id="customerNameField">Your name<input name="name" autocomplete="name" placeholder="Your name" minlength="2" maxlength="100"></label><label>Delivery address<textarea id="deliveryAddress" name="address" autocomplete="street-address" required minlength="10" maxlength="500" placeholder="House, street, area, city and PIN code"></textarea></label><div id="savedAddressTools" class="saved-address-tools hidden"><select id="savedAddressSelect" aria-label="Select a saved address"><option value="">Use a saved address</option></select><div class="address-buttons"><input id="addressLabel" maxlength="30" placeholder="Address label, e.g. Home" aria-label="New address label"><button type="button" id="saveAddressButton">Save address</button><button type="button" id="deleteAddressButton">Remove selected</button></div></div><button class="button checkout-button" type="submit">Place my order <span>→</span></button></form></div></dialog>
+  <dialog class="app-dialog small-dialog" id="authDialog"><div class="dialog-head"><div><div class="eyebrow">GOOD TO HAVE YOU HERE</div><h2 id="authTitle">Welcome back.</h2></div><button class="icon-close" data-close aria-label="Close sign in">×</button></div><div class="auth-tabs"><button class="active" data-auth-mode="login">Sign in</button><button data-auth-mode="register">Create account</button></div><form id="authForm" class="checkout-form"><label class="register-only hidden">Your name<input name="name" autocomplete="name" minlength="2" maxlength="100"></label><label class="login-role-field">Account type<select name="role"><option value="customer">Customer</option><option value="chef">Chef</option><option value="delivery_partner">Delivery partner</option><option value="admin">Admin</option></select></label><label>Email<input type="email" name="email" autocomplete="email" maxlength="254" required></label><label>Password<input type="password" name="password" autocomplete="current-password" minlength="8" maxlength="256" required></label><button class="button checkout-button" type="submit">Continue <span>→</span></button><p class="form-message" id="authMessage" role="status"></p><a class="auth-modal-signup" href="/signup">Create a customer account</a></form></dialog>
+  <dialog class="app-dialog small-dialog" id="trackingDialog"><div class="dialog-head"><div><div class="eyebrow">YOUR GOODNESS IS ON ITS WAY</div><h2>Order <span id="trackingNumber"></span></h2></div><button class="icon-close" data-close aria-label="Close tracking">×</button></div><div id="trackingBody"></div></dialog>
+  <dialog class="app-dialog small-dialog" id="historyDialog"><div class="dialog-head"><div><div class="eyebrow">A LITTLE NOSTALGIA</div><h2>Your orders</h2></div><button class="icon-close" data-close aria-label="Close order history">×</button></div><div id="historyBody" class="history-list"></div></dialog>
+  <dialog class="app-dialog partner-dialog" id="partnerDialog"><div class="dialog-head"><div><div class="eyebrow">SIMULATED PARTNER VIEW</div><h2>Delivery dashboard</h2></div><button class="icon-close" data-close aria-label="Close delivery dashboard">×</button></div><p class="sim-note">Demo dashboard for the mini project. Locations shown are simulated, not live GPS.</p><div id="partnerBody" class="history-list"></div></dialog>
+  <dialog class="app-dialog partner-dialog" id="adminDialog"><div class="dialog-head"><div><div class="eyebrow">STORE MANAGEMENT</div><h2>Admin dashboard</h2></div><button class="icon-close" data-close aria-label="Close admin dashboard">×</button></div><p class="sim-note">Sign in with the configured admin credentials to manage menu availability, prices, orders and customers.</p><div id="adminBody" class="history-list"></div></dialog>
+  <script src="{{ url_for('static', filename='app.js', v='2') }}" defer></script>
+</body>
+</html>
